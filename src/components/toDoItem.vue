@@ -2,7 +2,7 @@
   <li>
     <span v-bind:class="{task_done: task.completed}">
       <input type="checkbox" v-on:change="task.completed=!task.completed">
-      <strong>{{ index+1 }}</strong>
+      {{ index+1 }}
       {{ task.title }}
     </span>
     <button class="btn" v-on:click="$emit('delete-task', task.id)">
@@ -32,6 +32,7 @@ export default {
     align-items: center;
     padding: 10px 20px;
     margin-bottom: 10px;
+    font-size: 20px;
   }
 
   input {
