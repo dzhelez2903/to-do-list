@@ -1,12 +1,24 @@
 <template>
   <li>
-    <span v-bind:class="{task_done: task.completed}">
-      <input type="checkbox" v-on:change="task.completed=!task.completed">
-      {{ index+1 }}
-      {{ task.title }}
-    </span>
-    <button class="btn" v-on:click="$emit('delete-task', task.id)">
-      &times;</button>
+    <div class="grid-container">
+      <div class="check">
+        <label>
+          <input class="checkbox" type="checkbox" v-on:change="task.completed=!task.completed">
+          <span>
+            <font-awesome-icon icon="check"/>
+          </span>
+        </label>
+      </div>
+      <div class="title">
+        <p v-bind:class="{task_done: task.completed}">
+          {{ index+1 }}
+          {{ task.title }}
+        </p>
+      </div>
+      <div class="button">
+        <a class="btn" v-on:click="$emit('delete-task', task.id)"><font-awesome-icon icon="trash-alt" /></a>
+      </div>
+    </div>
   </li>
 </template>
 
@@ -23,42 +35,95 @@ export default {
 }
 </script>
 
-<style scoped>
-  li {
-    border: 1px solid #ccc;
-    border-radius: 5px;
+<style lang="scss" scoped>
+.grid-container {
+  max-width: 1600px;
+  display: grid;
+  grid-template-columns: 50px auto 50px;
+  grid-template-rows: auto;
+  gap: 0 0;
+  grid-template-areas:
+    "check title button";
+  border: 1px solid #b6b4d7;
+  border-radius: 5px;
+  margin-bottom: 20px;
+
+  &:hover {
+    box-shadow: 1px 0 10px 0 rgba(182, 180, 215, 0.48);
+  }
+
+  .check {
+    grid-area: check;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    padding: 10px 20px;
-    margin-bottom: 10px;
-    font-size: 20px;
-  }
+    position: relative;
 
-  input {
-    margin-right: 15px;
-  }
+    label {
+      width: 22px;
+      height: 18px;
+      display: block;
+      position: absolute;
+    }
 
-  .btn {
-    background-color: #e52626;
-    font-size: 30px;
-    font-weight: bold;
-    color: #fff;
-    line-height: 0;
-    padding: 16px 8px;
-    border-color: transparent;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: 0.3s;
-  }
+    input {
+      display: none;
 
-  .btn:hover {
-    background-color: transparent;
-    color: #e52626;
-    border-color: #e52626;
+      &:checked+span .fa-check {
+        color: green;
+      }
+    }
+
+    span {
+      position: absolute;
+      left: -2px;
+    }
+
+    input+span {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+
+    .fa-check {
+      color: #b6b4d7;
+      font-size: 20px;
+    }
+
+  }
+  .title {
+    grid-area: title;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .button {
+    grid-area: button;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a{
+      cursor: pointer;
+
+      .fa-trash-alt {
+        color: #b6b4d7;
+        font-size: 20px;
+        transition: 0.3s;
+
+        &:hover {
+          color: #820404;
+        }
+      }
+    }
+
   }
 
   .task_done {
     text-decoration: line-through;
   }
+}
+
 </style>
