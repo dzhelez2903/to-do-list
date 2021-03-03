@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="onSubmit">
-    <input type="text" v-model="title">
+    <input type="text" v-model="title"> <br>
     <button type="submit">Add task</button>
   </form>
 </template>
@@ -37,7 +37,7 @@ name: "addItem",
 
     input {
       width: 30%;
-      margin-right: 20px;
+      margin-bottom: 40px;
       font-size: 20px;
       outline:none;
       border: 1px solid #b6b4d7;

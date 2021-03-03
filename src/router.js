@@ -14,6 +14,6 @@ export default new Router( {
         {
             path: '/toDoList',
             component: ()=> import('./views/toDoList.vue')
-        }
+        },
     ]
 })
