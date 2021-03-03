@@ -12,7 +12,7 @@
       <div class="title">
         <p v-bind:class="{task_done: task.completed}">
           {{ index+1 }}
-          {{ task.title }}
+          {{ task.title | upp}}
         </p>
       </div>
       <div class="button">
@@ -31,6 +31,11 @@ export default {
       required: true
     },
     index: Number
+  },
+  filters: {
+    upp(value) {
+      return value.toUpperCase()
+    }
   }
 }
 </script>

@@ -1,43 +1,11 @@
 <template>
   <div id="app">
     <h1>Todo Application</h1>
-    <addItem
-      @addItem="addItem"
-    />
     <hr>
-    <toDoList
-        v-bind:tasks="tasks"
-        @del-item="delItem"
-    />
+
+    <router-view />
   </div>
 </template>
-
-<script>
-import toDoList from '@/components/toDoList';
-import addItem from "@/components/addItem";
-export default {
-  name: 'App',
-  data() {
-    return {
-      tasks: []
-    }
-  },
-
-  methods: {
-    delItem(id) {
-      this.tasks = this.tasks.filter(t=>t.id!==id)
-    },
-    addItem(newToDo) {
-      this.tasks.push(newToDo)
-    }
-  },
-
-  components: {
-    toDoList,
-    addItem
-  }
-}
-</script>
 
 <style lang="scss">
 #app {
