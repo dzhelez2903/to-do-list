@@ -16,7 +16,7 @@
         </p>
       </div>
       <div class="button">
-        <a class="btn" v-on:click="$emit('delete-task', task.id)"><font-awesome-icon icon="trash-alt" /></a>
+        <a class="btn" v-on:click="$emit('delete-task', task.id)"><font-awesome-icon icon="trash-alt"/></a>
       </div>
     </div>
   </li>
@@ -73,10 +73,6 @@ export default {
 
     input {
       display: none;
-
-      &:checked+span .fa-check {
-        color: green;
-      }
     }
 
     span {
@@ -123,12 +119,11 @@ export default {
         }
       }
     }
-
   }
-
   .task_done {
     text-decoration: line-through;
+    color: green;
+    font-weight: bold;
   }
 }
-
 </style>

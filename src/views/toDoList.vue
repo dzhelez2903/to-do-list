@@ -1,7 +1,6 @@
 <template>
   <div>
     <router-link to="/">Home</router-link>
-
     <addItem @addItem="addItem"/>
     <hr>
     <select v-model="filter">
@@ -34,15 +33,14 @@ export default {
   },
   computed: {
     filteredTasks() {
-     if (this.filter === 'all') {
-       return this.tasks
-     }
-
-     if (this.filter === 'completed') {
-       return this.tasks.filter(t => t.completed)
-     }
-     if (this.filter === 'not_completed') {
-        return this.tasks.filter(t => !t.completed)
+      if (this.filter === 'all') {
+        return this.tasks
+      }
+      if (this.filter === 'completed') {
+        return this.tasks.filter(t => t.completed === true)
+      }
+      if (this.filter === 'not_completed') {
+        return this.tasks.filter(t => t.completed === false)
       }
     }
   },
