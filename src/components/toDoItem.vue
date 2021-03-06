@@ -91,7 +91,6 @@ export default {
       color: #b6b4d7;
       font-size: 20px;
     }
-
   }
   .title {
     grid-area: title;
